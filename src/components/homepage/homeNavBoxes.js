@@ -11,7 +11,7 @@ const FeatureList = [
       { url: "docs/getting-started/1-what-i-do", text: "Journey Map" }
     ]
   },
-
+  /*
   {
     title: 'Machine / Deep Learning Data Pipeline',
     icon: 'img/icons/setting-up-feed.svg',
@@ -20,7 +20,7 @@ const FeatureList = [
       { url: "docs/datapipeline/1-data-tools-set", text: "Data Enginnering Tools" },
     ]
   },
-  /*
+
 {
   title: 'Key features',
   icon: 'img/icons/key-features.svg',
