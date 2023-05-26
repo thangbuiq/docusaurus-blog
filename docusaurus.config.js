@@ -6,48 +6,38 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'thangbuiq',
-  tagline: 'My Data Engineer Journey Blog',
-  url: 'https://thangbuiq.vercel.app',
+  title: 'daily.dev',
+  tagline: 'Where developers grow together',
+  url: 'https://docs.daily.dev/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/docusaurus.png',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'thangbuiq', // Usually your GitHub org/user name.
-  projectName: 'docusaurus-blog', // Usually your repo name.
-
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
+  favicon: 'img/favicon.ico',
+  organizationName: 'dailydotdev', // Usually your GitHub org/user name.
+  projectName: 'docs', // Usually your repo name.
 
   presets: [
     [
-      'classic',
+      '@docusaurus/preset-classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/thangbuiq/docusaurus-blog/tree/main',
+          editUrl: 'https://github.com/dailydotdev/docs/edit/main',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/thangbuiq/docusaurus-blog/tree/main',
+          editUrl: 'https://github.com/dailydotdev/docs/edit/main',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+        },
+        googleAnalytics: {
+          trackingID: 'UA-109059578-7',
+          // Optional fields.
+          anonymizeIP: true, // Should IPs be anonymized?
         },
       }),
     ],
@@ -56,22 +46,60 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      algolia: {
+        // If Algolia did not provide you any appId, use 'BH4D9OD16A'
+        appId: 'OFOYRKZKKB',
+  
+        // Public API key: it is safe to commit it
+        apiKey: 'f70587b4279fabdac7fd30732de4e5de',
+  
+        indexName: 'docs-daily'
+  
+        // Optional: see doc section below
+  
+        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+
+  
+        // Optional: Algolia search parameters
+
+  
+        //... other Algolia params
+      },
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
       navbar: {
-        title: 'My Site',
+        // title: 'My Site',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/docusaurus.png',
+          alt: 'daily.dev Logo',
+          src: 'img/logo.png',
         },
         items: [
           {
+            label: 'Docs',
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/thangbuiq/docusaurus-blog',
+            label: 'Video tutorials',
+            to: 'video-tutorials',
+            position: 'left'
+          },
+          {
+            label: 'Changelog',
+            href: 'https://app.daily.dev/sources/daily_updates',
+            position: 'left',
+          },
+          {
+            label: 'FAQs',
+            to: 'faqs',
+            position: 'left',
+          },
+          {
+            href: 'https://github.com/dailydotdev/docs',
             label: 'GitHub',
             position: 'right',
           },
@@ -81,11 +109,27 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Product',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Home',
+                to: 'https://daily.dev/',
+              },
+              {
+                label: 'Chrome extension',
+                to: 'https://chrome.google.com/webstore/detail/dailydev-the-homepage-dev/jlmpjdjjbgclbocgajdjefcidcncaied',
+              },
+              {
+                label: 'Firefox add-on',
+                to: 'https://addons.mozilla.org/en-US/firefox/addon/daily/',
+              },
+              {
+                label: 'Web version',
+                to: 'https://app.daily.dev/',
+              },
+              {
+                label: 'Changelog',
+                to: 'https://changelog.daily.dev/',
               },
             ],
           },
@@ -93,30 +137,87 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Github',
-                href: 'https://github.com/thangbuiq',
+                label: 'Open source',
+                to: 'https://github.com/dailydotdev/.github/blob/master/CONTRIBUTING.md',
               },
               {
-                label: 'Facebook',
-                href: 'https://www.facebook.com/qthang.ne/',
+                label: 'Feature requests',
+                to: 'https://github.com/dailydotdev/daily/discussions',
+              },
+              {
+                label: 'Online events',
+                to: 'https://www.meetup.com/the-monthly-dev-world-class-talks-by-expert-developers/',
+              },
+              {
+                label: 'Swag store',
+                to: 'https://store.daily.dev/',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'Company',
             items: [
               {
                 label: 'Blog',
-                to: '/blog',
+                to: 'https://daily.dev/blog',
+              },
+              {
+                label: 'Advertise',
+                to: 'https://promote.daily.dev/',
+              },
+              {
+                label: 'Brand book',
+                to: 'https://brand.daily.dev/',
+              },
+              {
+                label: 'Contact',
+                to: 'https://daily.dev/contact',
+              },
+              {
+                label: 'Privacy',
+                to: 'https://daily.dev/privacy',
+              },
+              {
+                label: 'Terms',
+                to: 'https://daily.dev/tos',
+              },
+            ],
+          },
+          {
+            title: 'Social',
+            items: [
+              {
+                label: 'Twitter',
+                to: 'https://twitter.com/dailydotdev',
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/thangbuiq/docusaurus-blog',
+                to: 'https://github.com/dailydotdev/daily',
+              },
+              {
+                label: 'YouTube',
+                to: 'https://www.youtube.com/channel/UCXUjtTfQWJa0G9K_SqRm3jQ',
+              },
+              {
+                label: 'Instagram',
+                to: 'https://www.instagram.com/dailydotdev/',
+              },
+              {
+                label: 'TikTok',
+                to: 'https://www.tiktok.com/@dailydotdev',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} thangbuiq, Inc. Built with Docusaurus.`,
+        copyright: `© ${new Date().getFullYear()} All rights reserved.`,
+      },
+      announcementBar: {
+        id: 'support_us',
+        content:
+          'Try daily.dev <a target="_blank" rel="noopener noreferrer" href="https://daily.dev"> now!</a>',
+        backgroundColor: '#fafbfc',
+        textColor: '#091E42',
+        isCloseable: true,
       },
       prism: {
         theme: lightCodeTheme,
